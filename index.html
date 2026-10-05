@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuru Atlas · An Epic Cartography of the Mahabharata</title>
+  <meta name="description" content="An interactive 3D cartographic atlas of places significant to events in the Sanskrit epic Mahabharata, from Hastinapura and Indraprastha to Kurukshetra and Dwarka.">
+  <meta name="theme-color" content="#0b0a08">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/globe.css">
+  <link rel="stylesheet" href="/src/styles/rail.css">
+  <link rel="stylesheet" href="/src/styles/panel.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top-Left Site Identification -->
+    <header class="site-header" role="banner">
+      <div class="site-title-row">
+        <h1 class="site-title">Kuru Atlas</h1>
+      </div>
+      <div class="site-subtitle">Cartography of the Mahabharata</div>
+      <div class="site-meta-label">Epic Horizons &amp; Archaeology</div>
+      
+      <button id="rail-toggle-btn" class="rail-toggle-btn" aria-label="Open index of places" aria-expanded="false">
+        <span>Places Index</span>
+        <span class="badge-count">14</span>
+      </button>
+    </header>
+
+    <!-- Bottom Left Subtle HUD Legend -->
+    <div class="hud-legend" aria-hidden="true">
+      <span><i class="dot-indicator"></i> 14 Canonical Stations</span>
+      <span>Click pin to inspect · Esc to reset</span>
+    </div>
+
+    <!-- 3D Globe Viewport -->
+    <main id="globe-container" aria-label="Interactive 3D Earth Globe with Mahabharata sites" tabindex="0"></main>
+
+    <!-- Side Rail Backdrop (for mobile / outside click) -->
+    <div id="rail-backdrop" class="rail-backdrop" tabindex="-1"></div>
+
+    <!-- Collapsible Side Rail Index -->
+    <aside id="side-rail" class="side-rail" aria-label="Places directory" aria-hidden="true">
+      <div class="rail-header">
+        <span class="rail-heading">Epic Sequence · 14 Stations</span>
+        <button id="rail-close-btn" class="rail-close-btn" aria-label="Close index panel">&times;</button>
+      </div>
+      <ul class="rail-list" role="list"></ul>
+    </aside>
+
+    <!-- Editorial Slide-In Detail Panel -->
+    <aside id="detail-panel" class="detail-panel" aria-label="Place details" aria-hidden="true">
+      <button class="panel-close-btn" aria-label="Close place details (Escape)">&times;</button>
+      
+      <div class="panel-content">
+        <!-- Hero Media Container -->
+        <figure class="panel-media">
+          <div class="media-skeleton">
+            <span class="skeleton-text">Retrieving Archival Record…</span>
+          </div>
+          <div class="media-placeholder" style="display: none;">
+            <div class="media-placeholder-frame">
+              <span class="placeholder-name"></span>
+              <span class="placeholder-note"></span>
+            </div>
+          </div>
+          <img class="panel-media-img" alt="" loading="lazy">
+        </figure>
+        <div class="panel-image-credit"></div>
+
+        <!-- Article Body -->
+        <article class="panel-body">
+          <div class="panel-story-num"></div>
+          <h2 class="panel-title"></h2>
+          <div class="panel-modern-loc"></div>
+          <div class="panel-identification"></div>
+
+          <!-- Description Paragraphs -->
+          <div class="panel-narrative"></div>
+
+          <!-- Metadata Block -->
+          <div class="panel-metadata-block">
+            <div class="meta-row">
+              <span class="meta-label">Parva</span>
+              <span class="meta-value meta-val-parva"></span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Canonical Section</span>
+              <span class="meta-value meta-val-ref"></span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Epic Event</span>
+              <span class="meta-value meta-val-event"></span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Key Figures</span>
+              <div class="meta-val-characters characters-list"></div>
+            </div>
+          </div>
+
+          <!-- Story Order Prev / Next Navigation -->
+          <footer class="panel-footer-nav">
+            <button class="nav-story-btn btn-prev-story" aria-label="Previous station in story order"></button>
+            <button class="nav-story-btn btn-next-story" aria-label="Next station in story order"></button>
+          </footer>
+        </article>
+      </div>
+    </aside>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

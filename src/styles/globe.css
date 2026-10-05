@@ -1,0 +1,167 @@
+/* Globe Canvas & Custom HTML Pin Styles */
+
+#globe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  outline: none;
+}
+
+#globe-container canvas {
+  display: block;
+}
+
+/* Custom Restrained Pin Markers */
+.kuru-pin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 32px;
+  height: 38px;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: auto;
+  transform: translate(-50%, -100%);
+  outline: none;
+}
+
+/* Pin Stem (Thin vertical 1px hairline) */
+.kuru-pin-stem {
+  width: 1px;
+  height: 16px;
+  background: var(--accent-ochre);
+  opacity: 0.85;
+  transition: background-color var(--transition-subtle), height var(--transition-subtle);
+}
+
+/* Pin Dot Head */
+.kuru-pin-head {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent-ochre);
+  box-shadow: 0 0 6px rgba(201, 142, 66, 0.4);
+  transition: background-color var(--transition-subtle), transform var(--transition-subtle);
+}
+
+/* Concentric Ring */
+.kuru-pin-ring {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-ochre);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, border-color var(--transition-subtle);
+}
+
+/* Pin Label (shows on hover / focus only) */
+.kuru-pin-label {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  padding: 3px 8px;
+  background-color: var(--bg-ink);
+  border: 1px solid var(--border-muted);
+  color: var(--text-parchment-bright);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.kuru-pin-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0 4px;
+  border-style: solid;
+  border-color: var(--border-muted) transparent transparent transparent;
+}
+
+/* Hover & Focus Interactions */
+.kuru-pin:hover .kuru-pin-ring,
+.kuru-pin:focus-visible .kuru-pin-ring {
+  animation: pin-pulse-once 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border-color: var(--text-parchment-bright);
+}
+
+.kuru-pin:hover .kuru-pin-head,
+.kuru-pin:focus-visible .kuru-pin-head {
+  background-color: var(--text-parchment-bright);
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.kuru-pin:hover .kuru-pin-label,
+.kuru-pin:focus-visible .kuru-pin-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Active Pin State */
+.kuru-pin.is-active .kuru-pin-stem {
+  background: var(--accent-vermilion);
+  height: 20px;
+}
+
+.kuru-pin.is-active .kuru-pin-head {
+  background: var(--accent-vermilion);
+  box-shadow: 0 0 8px rgba(184, 74, 45, 0.6);
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+.kuru-pin.is-active .kuru-pin-ring {
+  border-color: var(--accent-vermilion);
+  opacity: 0.9;
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+.kuru-pin.is-active .kuru-pin-label {
+  border-color: var(--accent-vermilion);
+  color: var(--accent-ochre);
+}
+
+@keyframes pin-pulse-once {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kuru-pin:hover .kuru-pin-ring,
+  .kuru-pin:focus-visible .kuru-pin-ring {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}

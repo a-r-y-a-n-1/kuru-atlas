@@ -1,0 +1,59 @@
+/* Design Tokens: Editorial Museum Palette & Typography */
+
+:root {
+  /* Warm Ink & Aged Parchment */
+  --bg-deep: #0b0a08;
+  --bg-ink: #0f0d0b;
+  --bg-surface: #151310;
+  --bg-surface-elevated: #1a1714;
+  --bg-surface-subtle: #201c18;
+
+  --border-hairline: rgba(232, 224, 208, 0.12);
+  --border-muted: rgba(232, 224, 208, 0.22);
+  --border-strong: rgba(232, 224, 208, 0.38);
+
+  --text-parchment: #e8e0d0;
+  --text-parchment-bright: #f6efe2;
+  --text-parchment-muted: #a69c8c;
+  --text-parchment-dim: #736b5e;
+  --text-parchment-faint: #4d463b;
+
+  /* Muted Accents: Oxidized vermilion and antique ochre, used strictly with restraint */
+  --accent-vermilion: #b84a2d;
+  --accent-ochre: #c98e42;
+  --accent-ochre-dim: rgba(201, 142, 66, 0.2);
+  --accent-ochre-glow: rgba(201, 142, 66, 0.4);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-meta: 'Cormorant Garamond', Georgia, serif;
+
+  /* Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Layout */
+  --panel-width: 480px;
+  --rail-width: 300px;
+  --reading-max-width: 62ch;
+
+  /* Motion */
+  --transition-panel: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fade: opacity 0.35s ease;
+  --transition-subtle: 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-panel: none;
+    --transition-fade: none;
+    --transition-subtle: none;
+  }
+}

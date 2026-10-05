@@ -1,0 +1,191 @@
+/* Main CSS: Editorial Museum Layout & Typography */
+@import './tokens.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-ink);
+  color: var(--text-parchment);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus outlines */
+:focus-visible {
+  outline: 1px solid var(--accent-ochre);
+  outline-offset: 2px;
+}
+
+/* App root container */
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-deep);
+}
+
+/* Site Header (Top-Left) */
+.site-header {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  z-index: 20;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  user-select: none;
+}
+
+.site-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-parchment-bright);
+  line-height: 1;
+}
+
+.site-subtitle {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  color: var(--text-parchment-muted);
+}
+
+.site-meta-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-parchment-dim);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: 2px;
+}
+
+.site-meta-label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background-color: var(--accent-ochre);
+}
+
+/* Top rail toggle button */
+.rail-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding: 6px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-parchment-muted);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-subtle);
+  width: fit-content;
+}
+
+.rail-toggle-btn:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-muted);
+  color: var(--text-parchment-bright);
+}
+
+.rail-toggle-btn .badge-count {
+  display: inline-block;
+  padding: 1px 6px;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-ochre);
+  font-size: 10px;
+}
+
+/* Subtle compass / orientation hint at bottom left */
+.hud-legend {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: var(--space-lg);
+  z-index: 10;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-parchment-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hud-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-legend .dot-indicator {
+  width: 5px;
+  height: 5px;
+  background-color: var(--accent-ochre);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-muted);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-ochre);
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    top: var(--space-md);
+    left: var(--space-md);
+  }
+
+  .site-title {
+    font-size: 20px;
+  }
+
+  .site-subtitle {
+    font-size: 12px;
+  }
+
+  .hud-legend {
+    display: none;
+  }
+}
