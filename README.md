@@ -2,6 +2,7 @@
 
 An interactive, editorial 3D globe charting the canonical places, kingdom capitals, sacred tirthas, and battlefields of the **Mahābhārata**.
 
+🔗 **Live Deployment**: [https://kuru-atlas.vercel.app](https://kuru-atlas.vercel.app)  
 🔗 **Repository**: [https://github.com/a-r-y-a-n-1/kuru-atlas](https://github.com/a-r-y-a-n-1/kuru-atlas)
 
 ---
